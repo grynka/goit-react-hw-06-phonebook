@@ -2,6 +2,8 @@ import Filter from "./Filter/Filter";
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from "./Contactlist/ContactList";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+
 
 export default function App() {
 const [contacts, setContacts] = useState(() => {
