@@ -2,6 +2,9 @@ import Filter from "./Filter/Filter";
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from "./Contactlist/ContactList";
 import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
+import { getContacts } from "redux/selectors";
+import { deleteContact } from "redux/contactsSlise";
 
 export default function App() {
 const [contacts, setContacts] = useState(() => {
@@ -12,9 +15,7 @@ const [contacts, setContacts] = useState(() => {
       return []
 })
 const [filter, setFilter] = useState('')
-const normalizedFilter = filter.toLowerCase();
-const filterContacts = contacts.filter(contact =>
-contact.name.toLowerCase().includes(normalizedFilter))
+const filterContacts = useSelector(getContacts)
 
 
 

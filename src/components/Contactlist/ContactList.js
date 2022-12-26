@@ -2,6 +2,8 @@ import React from "react"
 import { Button } from "./ContactList.styled";
 import PropTypes from 'prop-types';
 
+
+
  
 const ContactList = ({ contacts, onClick }) => {
   return (
