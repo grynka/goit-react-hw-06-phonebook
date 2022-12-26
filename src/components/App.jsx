@@ -18,6 +18,10 @@ const normalizedFilter = filter.toLowerCase();
 const filterContacts = contacts.filter(contact =>
 contact.name.toLowerCase().includes(normalizedFilter))
 
+const MyComponent = () => {
+  // Отримуємо необхідну частину стану
+  const value = useSelector(state => state.some.value);
+};
 
 
 useEffect(() => {
