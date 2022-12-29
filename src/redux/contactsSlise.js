@@ -7,14 +7,18 @@ const contactsSlice = createSlice({
   initialState: contactsInitialState,
   reducers: {
     addContact: {
+      
       reducer(state, action) {
+      const contactsName = (state.map(contact => contact.name))
+      if (contactsName.includes(action.payload.name))
+      {
+       alert(contactsName + ' allready exist')
+       return
+      }
+       else
         state.push(action.payload);
       },
       prepare(name, number) {
-        const contactsName = (this.reducer().map(contact => contact.name))
-        if (contactsName.includes(name)) {
-      alert(name + ' is allready in contact');
-    } else
         return {
           payload: {
         name: name,
@@ -25,7 +29,7 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact(state, action) {
-      const index = state.filter(contact => contact.id !== action.payload);
+      const index = state.filter(contact => contact.id !== action.payload.id);
       state.splice(index, 1);
     },
     filterContact(state, action) {

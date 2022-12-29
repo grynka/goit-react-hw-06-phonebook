@@ -24,11 +24,7 @@ useEffect(() => {
 }, [contacts])
 
 const formSubmitHandler = data => {
-    const contactsName = (contacts.map(contact => contact.name))
-    if (contactsName.includes(data.name)) {
-      alert(data.name + ' is allready in contact');
-    } else
-      setContacts( state => [...state, data] );
+    setContacts( state => [...state, data] );
     }
 
  const changeFilter = event => {
