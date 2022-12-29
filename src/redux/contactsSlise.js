@@ -35,10 +35,9 @@ const contactsSlice = createSlice({
     filterContact(state, action) {
         const index = state.filter(contact =>
 contact.name.toLowerCase().includes(action.payload))
-      state.splice(index, 1);
+     state.splice(index, 1);
     },
   },
 });
-// Експортуємо генератори екшенів та редюсер
 export const { addContact, deleteContact, filterContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
