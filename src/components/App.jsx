@@ -1,22 +1,31 @@
 import Filter from "./Filter/Filter";
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from "./Contactlist/ContactList";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getContacts } from "redux/selectors";
-import { deleteContact, addContact, filterContact } from "redux/contactsSlise";
+import { getContacts, getFilter } from "redux/selectors";
+import { deleteContact, addContact } from "redux/contactsSlise";
+import { filterContacts } from "redux/filterSlise";
 
 
 
-export default function App() {
-const filterContacts = useSelector(getContacts)
+export default function App() { 
+const contacts = useSelector(getContacts);
+const filter = useSelector(getFilter);
+const filteredContacts = contacts.filter(contact =>
+contact.name.includes(filter))
+
+
+console.log(contacts.filter(contact =>
+contact.name.includes(filter)))
+
+
 const dispatch = useDispatch();
 
-
-
-
 useEffect(() => {
-})
+if (filter !== "")  {
+  console.log(filter)}
+}, [filter])
 
 const handleContactsCreate = event => {
   event.preventDefault();
@@ -26,7 +35,7 @@ const handleContactsCreate = event => {
 }
 
  const changeFilter = event => {
-  dispatch(filterContact(event.currentTarget.value))
+  dispatch(filterContacts(event.currentTarget.value))
   };
 
  const deleteContactId = contactId => {
@@ -40,7 +49,7 @@ return (
         <ContactForm onSubmit={handleContactsCreate} />
         <h2>Contacts</h2>
         <Filter onChange={changeFilter} />
-        <ContactList contacts={filterContacts} onClick={deleteContactId} />
+        <ContactList contacts={filteredContacts} onClick={deleteContactId} />
       </>
     );
 }
