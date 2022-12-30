@@ -1,18 +1,14 @@
-import React from "react"
-import { Button } from "./ContactList.styled";
+import React from 'react';
+import { Button } from './ContactList.styled';
 import PropTypes from 'prop-types';
 
-
-
- 
 const ContactList = ({ contacts, onClick }) => {
   return (
     <ul>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
           <p>
-            {name}: {number}{' '}
-            <Button onClick={() => onClick(id)}>delete</Button>
+            {name}: {number} <Button onClick={() => onClick(id)}>delete</Button>
           </p>
         </li>
       ))}
@@ -20,7 +16,7 @@ const ContactList = ({ contacts, onClick }) => {
   );
 };
 
-export default ContactList
+export default ContactList;
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(
